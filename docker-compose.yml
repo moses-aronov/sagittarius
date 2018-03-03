@@ -8,3 +8,11 @@ services:
       - ./src:/app/src
     ports:
       - "3000:3000"
+  debug:
+    build: .
+    command: npm run debug
+    volumes:
+      - ./src:/app/src
+      - ./dist:/app/dist
+    ports:
+      - "9229:9229"

@@ -6,7 +6,10 @@
   "scripts": {
     "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "start": "node index.js",
-    "start:watch": "nodemon -e ts index.js"
+    "debug": "npm run prestart && concurrently \"npm run watch\" \"nodemon --watch ./dist --inspect-brk=0.0.0.0:9229 --nolazy ./dist/index.js\"",
+    "watch": "tsc -w -p .",
+    "prestart": "tsc -p .",
+    "docker:debug": "docker-compose build debug && docker-compose up debug"
   },
   "author": "Moses Aronov",
   "license": "MIT",
@@ -14,6 +17,7 @@
     "@types/chai": "^4.1.2",
     "@types/mocha": "^2.2.48",
     "chai": "^4.1.2",
+    "concurrently": "^3.5.1",
     "mocha": "^5.0.1",
     "nodemon": "^1.17.1",
     "ts-node": "^5.0.1"
