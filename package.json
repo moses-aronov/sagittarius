@@ -4,12 +4,14 @@
   "description": "typescript project template with testing, and docker",
   "main": "index.js",
   "scripts": {
+    "inspect": "nodemon --watch ./dist --inspect-brk=0.0.0.0:9229 --nolazy ./dist/index.js", 
     "test": "mocha -r ts-node/register src/**/*.spec.ts",
-    "start": "node index.js",
-    "debug": "npm run prestart && concurrently \"npm run watch\" \"nodemon --watch ./dist --inspect-brk=0.0.0.0:9229 --nolazy ./dist/index.js\"",
+    "start": "nodemon --watch ./dist ./dist/index.js",
+    "debug": "npm run prestart && concurrently \"npm run watch\" \"npm run inspect\"",
     "watch": "tsc -w -p .",
     "prestart": "tsc -p .",
-    "docker:debug": "docker-compose build debug && docker-compose up debug"
+    "docker:debug": "docker-compose build debug && docker-compose up debug",
+    "docker:app" : "docker-compose build app && docker-compose up app"
   },
   "author": "Moses Aronov",
   "license": "MIT",
