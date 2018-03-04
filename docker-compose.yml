@@ -3,16 +3,24 @@ version: "2"
 services:
   app:
     build: .
-    command: npm run start
-    volumes:
-      - ./src:/app/src
-    ports:
-      - "3000:3000"
-  debug:
-    build: .
-    command: npm run debug
     volumes:
       - ./src:/app/src
       - ./dist:/app/dist
+    command: npm run start
+
+  test:
+    build : .
+    volumes: 
+      - ./src:/app/src
+      - ./dist:/app/dist
+    command: npm run test
+
+  dev:
+    build: .
+    volumes: 
+      - ./:/app
+    command: bash
+    stdin_open: true
+    tty: true
     ports:
       - "9229:9229"
