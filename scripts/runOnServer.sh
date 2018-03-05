@@ -1,3 +1,3 @@
 #!/bin/bash
 docker-compose up -d dev
-docker-compose exec app "$@"
+docker-compose exec dev "$@"
