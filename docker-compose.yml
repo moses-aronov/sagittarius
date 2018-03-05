@@ -4,21 +4,21 @@ services:
   app:
     build: .
     volumes:
-      - ./src:/app/src
-      - ./dist:/app/dist
+      - ./app/src:/app/src
+      - ./app/dist:/app/dist
     command: npm run start
 
   test:
     build : .
     volumes: 
-      - ./src:/app/src
-      - ./dist:/app/dist
+      - ./app/src:/app/src
+      - ./app/dist:/app/dist
     command: npm run test
 
   dev:
     build: .
     volumes: 
-      - ./:/app
+      - ./app:/app
     command: bash
     stdin_open: true
     tty: true
